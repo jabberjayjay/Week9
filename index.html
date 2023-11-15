@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    button {
+        width: 100px;
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+
+  <h1>Rock Paper Scissors</h1>
+
+<div>
+    <button onclick="game('rock')">Rock</button>
+    <button onclick="game('paper')">Paper</button>
+    <button onclick="game('scissors')">Scissors</button>
+</div>
+
+<div>  <img src="rock.png" alt="Rock" onclick="game('rock')">
+    <img src="paper.png" alt="Paper" onclick="game('paper')">
+    <img src="scissors.jpg" alt="Scissors" onclick="game('scissors')">
+</div>
+
+
+  <div id="result">Choose an option to start the game!</div>
+
+  <script>
+    function computerPlay() {
+      var options = ['rock', 'paper', 'scissors'];
+      var randomIndex = Math.floor(Math.random() * options.length);
+      return options[randomIndex];
+    }
+
+    function playRound(playerSelection, computerSelection) {
+      if (playerSelection === computerSelection) {
+        return 'It\'s a tie!';
+      } else if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
+      ) {
+        return 'You win!';
+      } else {
+        return 'You lose!';
+      }
+    }
+
+    function game(playerChoice) {
+      var computerChoice = computerPlay();
+      var result = playRound(playerChoice, computerChoice);
+
+      document.getElementById('result').innerText = `You chose ${playerChoice}. Computer chose ${computerChoice}. ${result}`;
+    }
+  </script>
+
+</body>
+</html>
