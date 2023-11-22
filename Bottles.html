@@ -1,0 +1,38 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99 Bottles of Beer</title>
+  <style>
+    body {
+      font-family: 'Arial';
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>99 Bottles of Beer on the Wall</h1>
+
+  <div id="lyrics"></div>
+
+  <script>
+    function generateLyrics() {
+      let lyrics = '';
+
+      for (let i = 99; i > 0; i--) {
+        lyrics += `${i} bottle${i !== 1 ? 's' : ''} of beer on the wall, ${i} bottle${i !== 1 ? 's' : ''} of beer.<br>`;
+        lyrics += `Take one down and pass it around, ${i - 1} bottle${i - 1 !== 1 ? 's' : ''} of beer on the wall.<br><br>`;
+      }
+
+      lyrics += 'No more bottles of beer on the wall, no more bottles of beer.<br>';
+      lyrics += 'Go to the store and buy some more, 99 bottles of beer on the wall.';
+
+      document.getElementById('lyrics').innerHTML = lyrics;
+    }
+
+    generateLyrics();
+  </script>
+
+</body>
+</html>

@@ -50,6 +50,9 @@
   <div id="result">Choose an option to start the game!</div>
 
   <script>
+
+    let i=0;
+
     function computerPlay() {
       var options = ['rock', 'paper', 'scissors'];
       var randomIndex = Math.floor(Math.random() * options.length);
@@ -57,24 +60,48 @@
     }
 
     function playRound(playerSelection, computerSelection) {
+
+      
+
       if (playerSelection === computerSelection) {
+        i++;
         return 'It\'s a tie!';
       } else if (
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') ||
         (playerSelection === 'scissors' && computerSelection === 'paper')
       ) {
+        i++;
         return 'You win!';
       } else {
+        i++;
         return 'You lose!';
       }
+      
+      
+      
     }
 
+    
+
     function game(playerChoice) {
+
+      
       var computerChoice = computerPlay();
       var result = playRound(playerChoice, computerChoice);
 
-      document.getElementById('result').innerText = `You chose ${playerChoice}. Computer chose ${computerChoice}. ${result}`;
+      
+      document.getElementById('result').innerText = `Game ${i}: You chose ${playerChoice}. Computer chose ${computerChoice}. ${result}`;
+      
+      if(i>3){
+        
+      alert('You have already played 3 games. Click "OK" to restart.');
+      i = 0;
+      location.reload();
+      }
+      
+      
+    
     }
   </script>
 
